@@ -1,1 +1,1 @@
-# Functional-Data-Analysis-exam
+Functional Data Analysis exam
