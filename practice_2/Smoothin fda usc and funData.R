@@ -30,8 +30,8 @@ par(opar)
 ###################################################
 ### convert fdata class to fd class
 ###################################################
-class( absorp.fd <- fdata2fd( absorp, type.basis = "fourier", nbasis = 15) )
-class( absorp.fdata <- fdata(absorp.fd) )
+class(absorp.fd <- fdata2fd( absorp, type.basis = "fourier", nbasis = 15))
+class(absorp.fdata <- fdata(absorp.fd)) # data discretization
 
 dev.new( width = 150,height = 110, units = "mm")
 opar <- par(mfrow = c(1 , 2))
@@ -58,7 +58,7 @@ plot(out0$fdataobj)
 plot(out0$gcv["27",], type = "l")
 par(opar)
 
-out1 <- optim.np(learn, type.S = S.NW, par.CV = list(criteria = "GCV"))
+out1 <- optim.np(learn, type.S = S.NW, par.CV = list(criteria = "GCV")) # non parametric karnel smoothing
 
 out1$gcv.opt
 
@@ -128,6 +128,7 @@ lines(out4$fdata.est[ind, ], col = 6, lty = 1, lwd = 2)
 lines(out5$fdata.est[ind, ], col = 7, lty = 1, lwd = 2)
 lines(out6$fdata.est[ind, ], col = 2, lty = 1, lwd = 2)
 
+# It better to choose the less noisy curves, so KNN is one of the best
 
 ###############################################################################
 library(fda)
@@ -177,6 +178,7 @@ weatherPlot[[2]] <- weatherPlot[[2]] + geom_line(aes(colour = obs)) +
 gridExtra::grid.arrange(grobs = weatherPlot, nrow = 1)
 
 # Data
+install.packages('refund')
 data("cd4", package = "refund")
 ?cd4
 
@@ -308,3 +310,16 @@ plot(sim2Derr, obs = 2)
 plot(sim2Derr, obs = 3)
 plot(sim2Derr, obs = 4)
 plot(sim2Derr, obs = 5)
+
+
+
+
+
+
+
+
+
+
+
+
+
